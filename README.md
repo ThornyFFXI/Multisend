@@ -59,7 +59,7 @@ Typing this will reload your groups xml.<br>
 **/ms help**<br>
 Typing this will print a list of commands ingame.<br>
 
-#Special Targeting
+# Special Targeting
 You may use **[t]** **[me]** or **[p0] [p1] [p2] [p3] [p4] [p5]** to replace the <> equivalents, if you wish to resolve them on local character.<br>
 This will result in the *sending* character's data being used.<br>
 Using **<t>** **<me>** etc.. will result in the *receiving* character's data being used.<br>
