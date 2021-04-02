@@ -64,4 +64,4 @@ You may use **[t]** **[me]** or **[p0] [p1] [p2] [p3] [p4] [p5]** to replace the
 This will result in the *sending* character's data being used.<br>
 Using **<t>** **<me>** etc.. will result in the *receiving* character's data being used.<br>
 For example, if CharacterA uses */ms sendto CharacterB /ma "Fire IV" [t]*, then CharacterB will cast Fire IV on CharacterA's target.<br>
-However, if CharacterA uses */ms sendto CharacterB /ma "Fire IV" <t>*, then CharacterB will cast Fire IV on whatever CharacterB has targeted at the time.
+However, if CharacterA uses */ms sendto CharacterB /ma "Fire IV" &lt;t&gt;*, then CharacterB will cast Fire IV on whatever CharacterB has targeted at the time.
