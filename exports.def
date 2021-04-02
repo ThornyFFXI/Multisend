@@ -1,0 +1,4 @@
+LIBRARY "Multisend"
+EXPORTS
+	expCreatePlugin
+	expGetInterfaceVersion
