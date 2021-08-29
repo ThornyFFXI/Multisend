@@ -38,34 +38,34 @@ private:
     std::string			s_name;
     uint32_t			s_position;
     bool				s_last_run_state;
-    float				s_vector_x;
-    float				s_vector_z;
-
     //Configuration
     std::list<uint16_t>	c_groups;
     float				c_maxdist;
     volatile bool		c_follow;
     volatile bool		c_attemptzone;
     volatile bool		c_ignoreself;
+    float				s_vector_x;
+    float				s_vector_z;
+
     volatile bool		c_debug;
     volatile bool		c_safemode;
 
 public:
     const char* GetName(void) const override
     {
-        return u8"Multisend";
+        return "Multisend";
     }
     const char* GetAuthor(void) const override
     {
-        return u8"Thorny";
+        return "Thorny";
     }
     const char* GetDescription(void) const override
     {
-        return u8"Insert description here.";
+        return "Insert description here.";
     }
     const char* GetLink(void) const override
     {
-        return u8"Insert link here.";
+        return "Insert link here.";
     }
     double GetVersion(void) const override
     {

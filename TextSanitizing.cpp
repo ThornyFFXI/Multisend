@@ -67,12 +67,13 @@ void Multisend::SanitizeCommand(char* Input)
 {
 	if (Input[0] != '/')
 	{
-		if (c_debug)
-			m_AshitaCore->GetChatManager()->Write(0, false, "Detected command without leading '/'. Prepending '/echo'...");
-		char* prepend = "/echo ";
-		size_t plen = strlen(prepend);
-		memmove(Input + plen, Input, strlen(Input) + 1);
-		memcpy(Input, prepend, strlen(prepend));
+        if (c_debug)
+        {
+            m_AshitaCore->GetChatManager()->Write(0, false, "Detected command without leading '/'. Prepending '/echo'...");
+        }
+        char buffer[248] = {0};
+        sprintf_s(buffer, 248, "/echo %s", Input);
+        memcpy(Input, buffer, 248);
 	}
 	else
 	{
