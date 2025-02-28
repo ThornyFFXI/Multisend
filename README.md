@@ -6,6 +6,14 @@ Multisend is a replacement for servo.  No synchronization is needed, just load a
 Each character receiving or sending data must be on Ashita3 or Ashita4 and have a compatible version of Multisend loaded.<br>
 The current version of Multisend is 1.17 for both Ashita3 and Ashita4.<br>
 
+# Installation
+Do not download the entire repository as a zip unless you plan to compile the plugin yourself. That will not provide the files you need.<br>
+
+1. Download the plugin release zip that matches your ashita installation's interface version from the releases area on the right side.
+2. Extract the entire zip to your ashita folder(the folder containing ashita.dll and ashita-cli.exe). Everything will fall into place.
+3. Load with '/load multisend' or add the same line to your startup script. Multisend is a plugin not an addon, so do not use '/addon load'.
+
+
 **/ms send [command]**<br>
 **/mss [command]**<br>
 Sends a command to all characters.<br>
