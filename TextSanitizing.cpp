@@ -56,7 +56,12 @@ std::string Multisend::SubValues(std::string Input)
     find = Working.find("[lastst]");
     if (find != std::string::npos)
     {
+		#if (DEF_ASHITA_INTERFACE_VERSION < 416)
+        auto ptr = m_AshitaCore->GetMemoryManager()->GetTarget()->GetRawStructure();
+        unsigned int TargetIndex = Read16(ptr, 184);
+		#else
         unsigned int TargetIndex = m_AshitaCore->GetMemoryManager()->GetTarget()->GetLastTargetIndex();
+		#endif
         Working.replace(find, 8, std::to_string(m_AshitaCore->GetMemoryManager()->GetEntity()->GetServerId(TargetIndex)));
     }
 

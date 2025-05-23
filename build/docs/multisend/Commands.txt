@@ -30,6 +30,6 @@ CONT: If you move after first acting upon the object or sending an uberwarp comm
 /ms reload - Will reload groups xml.
 /ms help - Print an ingame reference.
 
-You may use [t] [me] or [p0] [p1] [p2] [p3] [p4] [p5] to replace the <> equivalents, if you wish to resolve them on local character.  This will replace them with the appropriate server IDs, allowing the command to resolve on receiving character.
+You may use [t] [me] or [p0] [p1] [p2] [p3] [p4] [p5] [lastst] to replace the <> equivalents, if you wish to resolve them on local character.  This will replace them with the appropriate server IDs, allowing the command to resolve on receiving character.
 
 Example: Typing /ms send /ma "Fire IV" [t] will make all characters with multisend loaded cast Fire IV on the character who typed the command's target, rather than their own current target.
