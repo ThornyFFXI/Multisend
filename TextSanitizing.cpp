@@ -52,6 +52,14 @@ std::string Multisend::SubValues(std::string Input)
 		unsigned int TargetIndex = m_AshitaCore->GetMemoryManager()->GetTarget()->GetTargetIndex(m_AshitaCore->GetMemoryManager()->GetTarget()->GetIsSubTargetActive());
 		Working.replace(find, 3, std::to_string(m_AshitaCore->GetMemoryManager()->GetEntity()->GetServerId(TargetIndex)));
 	}
+
+    find = Working.find("[lastst]");
+    if (find != std::string::npos)
+    {
+        unsigned int TargetIndex = m_AshitaCore->GetMemoryManager()->GetTarget()->GetLastTargetIndex();
+        Working.replace(find, 8, std::to_string(m_AshitaCore->GetMemoryManager()->GetEntity()->GetServerId(TargetIndex)));
+    }
+
 	return Working;
 }
 

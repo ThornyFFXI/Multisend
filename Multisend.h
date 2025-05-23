@@ -5,7 +5,7 @@
 #pragma once
 #endif
 
-#include "C:\Ashita 4\plugins\sdk\Ashita.h"
+#include "C:\Users\Garre\FFXI\Ashita 4\plugins\sdk\Ashita.h"
 #include "Structs.h"
 #include "..\common\Utilities.h"
 #include "..\common\thirdparty\rapidxml.hpp"
@@ -69,7 +69,7 @@ public:
     }
     double GetVersion(void) const override
     {
-        return 1.19f;
+        return 1.20f;
     }
     int32_t GetPriority(void) const override
     {

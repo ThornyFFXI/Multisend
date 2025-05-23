@@ -6,8 +6,8 @@ bool Multisend::ReadCommand()
 	{
 		if (CheckMatch(p_MMF->Command.Command[s_position]))
 		{
-			const char* text = new char[248];
-			memcpy((void*)text, &(p_MMF->Command.Command[s_position].command), 248);
+			char text[256] = {0};
+			memcpy(text, &(p_MMF->Command.Command[s_position].command), 256);
 			if (c_debug)
 			{
 				m_AshitaCore->GetChatManager()->Writef(0, false, "Sending command: %s", text);
@@ -20,7 +20,6 @@ bool Multisend::ReadCommand()
 			{
 				m_AshitaCore->GetChatManager()->QueueCommand(0, text);
 			}
-			delete text;
 		}
 		s_position++;
 		if (s_position == 100) s_position = 0;
@@ -31,12 +30,11 @@ bool Multisend::ReadCommand()
 
 void Multisend::SendCommand(multisend_type type, uint32_t param, const char* Command)
 {
-	char* Text = new char[248];
-	memset((void*)Text, 0, 248);
-	memcpy(Text, Command, strlen(Command));
+    char commandText[248] = {0};
+	memcpy(commandText, Command, strlen(Command));
 	if (c_safemode)
-		SanitizeCommand(Text);
-	SubValues(Text);
+		SanitizeCommand(commandText);
+	SubValues(commandText);
 	Claim(&(p_MMF->Command.ProcessID), 0);
 
 	int NextPosition = p_MMF->Command.Position + 1;
@@ -45,17 +43,10 @@ void Multisend::SendCommand(multisend_type type, uint32_t param, const char* Com
 	p_MMF->Command.Command[NextPosition].active = false;
 
 	memset(&(p_MMF->Command.Command[p_MMF->Command.Position].command), 0, 248);
-	if (strlen(Text) > 247)
-	{
-		memcpy(&(p_MMF->Command.Command[p_MMF->Command.Position].command), Text, 247);
-	}
-	else
-	{
-		memcpy(&(p_MMF->Command.Command[p_MMF->Command.Position].command), Text, strlen(Text));
-	}
+	memcpy(&(p_MMF->Command.Command[p_MMF->Command.Position].command), commandText, min(strlen(commandText), 247));
 	if (c_debug)
 	{
-		m_AshitaCore->GetChatManager()->Writef(0, false, "Publishing position %d : %s", p_MMF->Command.Position, Text);
+		m_AshitaCore->GetChatManager()->Writef(0, false, "Publishing position %d : %s", p_MMF->Command.Position, commandText);
 	}
 	p_MMF->Command.Command[p_MMF->Command.Position].sender_process_id = GetCurrentProcessId();
 	p_MMF->Command.Command[p_MMF->Command.Position].type = type;
@@ -63,7 +54,6 @@ void Multisend::SendCommand(multisend_type type, uint32_t param, const char* Com
 	p_MMF->Command.Command[p_MMF->Command.Position].active = true;
 	p_MMF->Command.Position = NextPosition;
 	InterlockedExchange(&(p_MMF->Command.ProcessID), 0);
-	delete Text;
 }
 
 void Multisend::UpdateName(std::string Name)
